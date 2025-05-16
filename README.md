@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+# ProtoPie FE 과제 [자판기 구현하기]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+개발 기간: 2025.05.14 - 2025.05.15
 
-Currently, two official plugins are available:
+## 프로젝트 실행 방법
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. install dependencies  
+   `yarn`
 
-## Expanding the ESLint configuration
+2. run project  
+   `yarn dev`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 구현 내용
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- 자판기 로직 다이어그램(flow chart) 작성
+- 자판기 UI 및 로직 구현 (React)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+  - 유저가 사용 가능한 결제 수단을 선택하여 금액을 입력할 수 있도록 우측에 Payments 리스트 렌더링
+    - 현금은 각 5장, 카드는 credit/debit 두 가지 카드
+  - 결제 프로세스
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+    - 결제 수단이 현금일 경우
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+    1. 우측 현금 결제 수단 중 입력할 금액을 클릭하여 금액을 선지불한다.
+    2. 결제할 상품 만큼의 금액이 입력하면 상품 구매 버튼이 활성화되고 유저는 구매 버튼을 클릭한다.
+    3. 투입된 총 금액에서 결제 금액이 차감되고, 하단 결제 상품 리스트에 결제된 상품이 추가된다.
+    4. 남은 거스름돈은 거스름돈 반환 버튼을 클릭하여 우측 보유 금액으로 다시 반환받는다.
+
+    - 결제 수단이 카드일 경우
+
+    1. 우측 카드 결제 수단 중 사용할 카드를 선택한다.
+    2. 결제할 카드를 선택하면 모든 상품의 구매 버튼이 활성화되고 유저는 구매 버튼을 클릭한다.
+    3. 카드 잔액이 상품 금액보다 많으면 결제 성공, 적으면 결제 실패한다.
+    4. 결제 성공 시, 카드 잔액에서 결재 금액이 차감된다.
+
+- 구현내용
+  - Context를 정의하여 자판기 관련 로직을 분리
+  - 거스름돈 반환 로직 처리
+
+### 자판기 다이어그램
+
+![vending-machine-flowchart](https://github.com/user-attachments/assets/82db048a-e634-4f17-a3f3-bf692e0027d4)
