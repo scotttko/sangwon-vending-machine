@@ -37,6 +37,6 @@
   3. 카드 잔액이 상품 금액보다 많으면 결제 성공, 적으면 결제 실패한다.
   4. 결제 성공 시, 카드 잔액에서 결재 금액이 차감된다.
 
-### 자판기 다이어그램
+## 자판기 다이어그램
 
 ![vending-machine-flowchart](https://github.com/user-attachments/assets/82db048a-e634-4f17-a3f3-bf692e0027d4)
