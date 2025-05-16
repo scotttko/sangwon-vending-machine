@@ -1,7 +1,8 @@
 import { PAYMENTS } from '@/constants/products'
 import type { InsertedPayment, Payment, PaymentType } from '@/models/payments'
 import type { Product, PurchasedProduct } from '@/models/products'
-import { calculateChange, delay } from '@/utils/common'
+import { delay } from '@/utils/common'
+import { calculateChange } from '@/utils/vending-machine'
 import {
   createContext,
   useCallback,
