@@ -26,6 +26,7 @@ export default css`
 
   #root {
     max-width: 1280px;
+    min-width: 768px;
     margin: 0 auto;
     text-align: center;
   }

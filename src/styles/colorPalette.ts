@@ -8,6 +8,9 @@ export const colorPalette = css`
     --color-gray-100: #eeeff3;
     --color-gray-300: #bcbdc3;
     --color-gray-400: #9c9da4;
+    --color-gray-600: #4e545f;
+    --color-gray-700: #3e434c;
+    --color-gray-800: #272a30;
     --color-orange-300: #ffa98e;
     --color-orange-500: #ff6231;
     --color-red-50: #ffedee;
@@ -22,6 +25,9 @@ export const colors = {
   gray100: 'var(--color-gray-100)',
   gray300: 'var(--color-gray-300)',
   gray400: 'var(--color-gray-400)',
+  gray600: 'var(--color-gray-600)',
+  gray700: 'var(--color-gray-700)',
+  gray800: 'var(--color-gray-800)',
   orange300: 'var(--color-orange-300)',
   orange500: 'var(--color-orange-500)',
   red50: 'var(--color-red-50)',
